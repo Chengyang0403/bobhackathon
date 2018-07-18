@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'password','gender', 'intro',
     ];
 
     /**
@@ -26,4 +26,56 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
+    
+    public function bulletins()
+    {
+        return $this->hasMany(Bulletin::class);
+    }
+    
+    public function joinings()
+    {
+        return $this->belongsToMany(Event::class, 'user_join', 'user_id', 'event_id')->withTimestamps();
+    }
+    
+    public function join($eventId)
+ 	{
+ 	    $exist = $this->is_joining($eventId);
+	    if ($exist) {
+		    return false;
+	    }else{
+		    $this->joinings()->attach($eventId);
+		    return true;
+	    }
+	}
+	
+    public function cancel($eventId)
+   {
+    
+    $exist = $this->is_joining($eventId);
+    
+    
+    if ($exist) {
+        $this->joinings()->detach($eventId);
+        return true;
+    } 
+    
+    else {
+        return false;
+    }
+   
+       
+   }
+   
+  public function is_joining($eventId) {
+    return $this->joinings()->where('event_id', $eventId)->exists();
+  }
+  
+  
+  
 }
+
