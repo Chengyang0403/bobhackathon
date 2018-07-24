@@ -112,15 +112,15 @@ h3 {
      
      
  }
- .img{
-    border: 10px solid transparent;
-    margin-bottom: 25px;
-    width: 80%;
-    height:50%;
-    opacity: 0.9;
-    transition: 1.5s;
-    filter: grayscale(0%);
- }
+ /*.img{*/
+ /*   border: 10px solid transparent;*/
+ /*   margin-bottom: 25px;*/
+ /*   width: 80%;*/
+ /*   height:50%;*/
+ /*   opacity: 0.9;*/
+ /*   transition: 1.5s;*/
+ /*   filter: grayscale(0%);*/
+ /*}*/
   .carousel-inner img {
       
       width: 100%;
@@ -180,17 +180,59 @@ h3 {
   <center><h3>Presonal Page</h3></center>
  </div>
     <div class="row">
-     <div class="col-sm-6">
+     <div class="col-sm-3">
       <div class ="img">
-      <img src="{{ secure_asset('amanda3.jpg') }}" class="img-circle person" alt="Random Name" width="255" height="255" ><br>
+      @if ($user->image_data)　　　　　　　
+                    <img src="data:{{$user->mime_type }};base64, {!!$user->image_data!!}">
+
+                @else
+                    <img class="media-object img-rounded img-responsive" src="{{ Gravatar::src($user->email, 500) }}" alt="avater">
+
+                @endif    
+      <br>
       <div id="editbtn">
       @if (Auth::id() == $user->id)
     
      <a href="{{ URL::route('users.edit', ['username' => $user->id]) }}" class="cp_btn" > Edit My Profile </a>
     @endif
+  
+    
+    {!! Form::open(['url' => '/upload', 'method' => 'post', 'files' => true]) !!}
+    
+    {{--成功時のメッセージ--}}
+    @if (session('success'))
+        {!! Form::open(['route' => 'posts.store', 'files' => 'true']) !!}
+        <!--@include('users.profile', ['title' => null, 'submitButton' => 'Add post'])-->
+        {!! Form::close() !!}
+    <div class="alert alert-success">{{ session('success') }}</div>
+    @endif
+    {{-- エラーメッセージ --}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+        </div>
+    @endif
+    
+    <div class="form-group">
+       
+        {!! Form::label('file', '画像アップロード', ['class' => 'control-label']) !!}
+        {!! Form::file('file') !!}
+    </div>
+    
+    <div class="form-group">
+        {!! Form::submit('アップロード', ['class' => 'btn btn-default']) !!}
+    </div>
+    {!! Form::close() !!}
+    
+  
     </div>
       </div>
     </div>
+    
     
     <div class="col-sm-6">
      <div class = "info">

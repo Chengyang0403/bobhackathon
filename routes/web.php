@@ -58,7 +58,14 @@ Route::group(['middleware' => 'auth'], function () {
     });
     
     Route::resource('bulletins', 'BulletinsController', ['only' => ['store', 'destroy']]);
-
+    
+    Route::post('/upload', 'PicsController@upload');
  });
+ 
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+
 
 ?>

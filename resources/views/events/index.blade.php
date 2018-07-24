@@ -209,6 +209,9 @@ color:pink;
                width:100%;
                
            }
+           .text-center{
+               font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+           }
            
 </style>
 @extends('layouts.app')
