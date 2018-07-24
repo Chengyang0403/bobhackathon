@@ -2,43 +2,45 @@
 
 
 
-.cp_btn {
-display: block;
-position: relative;
-width: 160px;
-padding: 0.8em;
-text-align: center;
-text-decoration: none;
-color: #fff;
-border:1px solid #eb8d4d;
-background: #eb8d4d;
-overflow: hidden;
-z-index: 1 !important;
-}
-.cp_btn:after {
-content:"";
-position: absolute;
-top: 50%;
-left: 50%;
-height: 0;
-width: 100%;
-background : #fff;
-opacity: 0;
-transform: translateX(-50%) translateY(-50%) rotate(45deg);
-transition: 0.3s;
-z-index: -1;
-}
-.cp_btn:hover {
-color: #da3c41;
-}
-.cp_btn:hover:after {
-height: 250%;
-opacity: 1;
-}
-.cp_btn:active:after {
-height: 350%;
-opacity: 1;
-}
+  .cp_btn {
+  display: block;
+  position: relative;
+  width: 160px;
+  padding: 0.8em;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  border:1px solid #eb8d4d;
+  background: #eb8d4d;
+  overflow: hidden;
+  z-index: 1 !important;
+  font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+  }
+  .cp_btn:after {
+  content:"";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 0;
+  width: 100%;
+  background : #fff;
+  opacity: 0;
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transition: 0.3s;
+  z-index: -1;
+  font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+  }
+  .cp_btn:hover {
+  color: #da3c41;
+  }
+  .cp_btn:hover:after {
+  height: 250%;
+  opacity: 1;
+  }
+  .cp_btn:active:after {
+  height: 350%;
+  opacity: 1;
+  }
 
  .modal-header {
       background-color: #eb8d4d;
@@ -55,21 +57,25 @@ opacity: 1;
       padding: 40px 50px;
   }
 
-.nav-tabs li a {
-      color: #777;
+  .nav-tabs li a {
+      color: black;
+      font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
   }
   
   .navbar {
       font-family: Montserrat, sans-serif;
       margin-bottom: 0;
-      background-color: #2d2d30;
+      background-color: #eb8d4d;
       border: 0;
       font-size: 11px !important;
       letter-spacing: 4px;
-      opacity: 0.7;
+      opacity: 1.0;
+  }
+  .navbar li {
+    color: white;
   }
   .navbar li a, .navbar .navbar-brand { 
-      color: #d5d5d5 !important;
+      color: white !important;
   }
   .navbar-nav li a:hover {
       color: #e14646 !important;
@@ -84,8 +90,14 @@ opacity: 1;
   
    .open .dropdown-toggle {
       color: #fff;
-      background-color: #555 !important;
+      background-color: #eb8d4d !important;
   }
+  .dropdown-menu {
+    background: #eb8d4d;
+    }
+    .dropdown-menu li{
+       color:#eb8d4d;
+    }
 </style>
 
 
@@ -100,23 +112,21 @@ opacity: 1;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">BoBの森</a>
+      <a class="navbar-brand" href="{{ URL::route('events.index') }}">D・O・U・K・I・S</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li>{!! link_to_route('events.index', 'HOME') !!} </li>
-        <li><a href="#aruaru">ABOUT</a></li>
+        <li>{!! link_to_route('events.create', 'CREATE AN EVENT') !!}</li>
          <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">ユーザー：{{$user->username}}さん
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li>{!! link_to_route('events.create', '新規イベントの投稿') !!}</li>
-            
             <li>{!! link_to_route('users.profile','My profile',['user_name' => $user->id])!!}</li>
             <li>{!! link_to_route('logout.get', 'Logout')!!}</li>
            </ul>
         
-        <li><a href="#contact">Team BoB</a></li>
+        <li><a href="#myCarousel1">Team BoB</a></li>
     </div>
   </div>
 </nav>
@@ -129,7 +139,7 @@ opacity: 1;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#myPage">BoBの森</a>
+      <a class="navbar-brand" href="#myPage">D・O・U・K・I・S</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
@@ -143,7 +153,7 @@ opacity: 1;
              <li><a data-toggle="modal" data-target="#login">Login</a></li>
            </ul>
         
-        <li><a href="#contact">Team BoB</a></li>
+        <li><a href="#myCarousel1">Team BoB</a></li>
     </div>
   </div>
 </nav>
@@ -158,24 +168,29 @@ opacity: 1;
         <div class="modal-body">
           {!! Form::open(['route' => 'signup.post']) !!}
             <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-user"></span> Please enter your Nickname</label>
+              <label for="psw"><span class="glyphicon glyphicon-user"></span> Nickname</label>
               <input  class="form-control" name="username" type="text" value= "{{old('username')}}" autocomplete="off">
             </div>
             <div class="form-group">
-              <label for="psw"><span class="glyphicon glyphicon-piggy-bank"></span> Please enter your gender</label>
-               <input  class="form-control" name="gender" type="text" value= "{{old('gender')}}" autocomplete="off">
+              <label for="psw"><span class="glyphicon glyphicon-piggy-bank"></span> Gender</label>
+               <!--<input  class="form-control" name="gender" type="text" value= "{{old('gender')}}" autocomplete="off">-->
+               <br>
+               <select class-"form-control" name="gender" type="text">
+                 <option value-"male">male</option>
+                 <option value-"female">female</option>
+                </select>
             </div>
             <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Please enter your intro</label>
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Self introduction</label>
               <textarea  class="form-control" name="intro" type="textarea" value= "{{old('intro')}}" autocomplete="off"></textarea>
             </div>
             <div class="form-group">
-              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Please enter your password</label>
-              <input  class="form-control" name="password" type="text" " autocomplete="off">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Password</label>
+              <input  class="form-control" name="password" type="password" " autocomplete="off">
             </div>
             <div class="form-group">
-              <label for="password"><span class="glyphicon glyphicon-user"></span> Please comfire your password </label>
-              <input  class="form-control" name="password_confirmation" type="text" " autocomplete="off">
+              <label for="password"><span class="glyphicon glyphicon-user"></span> Confirm your password </label>
+              <input  class="form-control" name="password_confirmation" type="password" " autocomplete="off">
             </div>
               <center><button type = "sumbit" class="cp_btn">Signup
           
@@ -212,7 +227,7 @@ opacity: 1;
             </div>
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Please enter your password</label>
-              <input  class="form-control" name="password" type="text" value= "{{old('password')}}" autocomplete="off">
+              <input  class="form-control" name="password" type="password" value= "{{old('password')}}" autocomplete="off">
             </div>
               
         <center><button type = "sumbit" class="cp_btn">Login

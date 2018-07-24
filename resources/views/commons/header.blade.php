@@ -31,24 +31,24 @@
       <div class="item active">
          <img src="{{ secure_asset('header1.jpg') }}"length = 50 , width = 100>
         <div class="carousel-caption">
-          <h3>???</h3>
-          <p>????</p>
+          <h3></h3>
+          <p></p>
         </div>      
       </div>
 
       <div class="item">
         <img src="{{ secure_asset('header2.jpg') }}"length = 100 , width = 100>
         <div class="carousel-caption">
-          <h3>???</h3>
-          <p>???</p>
+          <h3></h3>
+          <p></p>
         </div>      
       </div>
     
       <div class="item">
          <img src="{{ secure_asset('header3.jpg') }}"length = 100 , width = 100>
         <div class="carousel-caption">
-          <h3>???</h3>
-          <p>???</p>
+          <h3></h3>
+          <p></p>
         </div>      
       </div>
     </div>

@@ -1,7 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
-
 <style>
 .cp_btn {
 display: block;
@@ -98,7 +94,42 @@ top: -16px;
 transition: 0.4s;
 color: #da3c41;
 }
+  .carousel-inner img {
+      
+      width: 100%;
+      height: 40px;
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+
+  .carousel-inner img {
+      
+      width: 100%;
+      height: 40px;
+      margin: auto;
+  }
 </style>
+
+@extends('layouts.app')
+
+<div class="carousel-inner" role="listbox">
+      <div class="item active">
+         <img src="{{ secure_asset('header4.jpg') }}"length = 50 , width = 100>
+        <div class="carousel-caption">
+          <h3></h3>
+          <p></p>
+        </div>      
+      </div>
+</div>
+
+@section('content')
 
 <div class="col-md-7 col-md-offset-3">
 <center><h1>{{ $user->username }}の編集ページ</h1></center>

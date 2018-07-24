@@ -1,32 +1,425 @@
+<style>
+.info{
+    
+    font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+}
+.midashi1 {
+  margin-top:50px;
+  margin-bottom:50px;
+  position: relative;
+  padding: 1em 4em 1em 1em;
+  -webkit-background: linear-gradient(-155deg, rgba(0, 0, 0, 0) 1.5em, #f6f6f6 0%);
+  background: linear-gradient(-155deg, rgba(0, 0, 0, 0) 1.5em, #f6f6f6 0%);
+  border-radius: 6px;
+  font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+}
+.midashi::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  content: '';
+  width: 1.65507em;
+  height: 3.5493em;
+  background: -webkit-linear-gradient(to left bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .2));
+  background: linear-gradient(to left bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, .1) 0%, rgba(0, 0, 0, .2));
+  border-bottom-left-radius: 6px;
+  box-shadow: -.2em .2em .3em -.1em rgba(0, 0, 0, .15);
+  -webkit-transform: translateY(-1.89424em) rotate(-40deg);
+  transform: translateY(-1.89424em) rotate(-40deg);
+  -webkit-transform-origin: bottom right;
+  transform-origin: bottom right;
+}
+
+h3 {
+               color: white;
+            }
+            h4 {
+                color: white;
+            }
+            #shortevent {
+                padding: 10px;
+            }
+            .shortevent {
+              
+              font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+              padding: 40px 70px 70px 70px;
+              text-align: center;
+              height: 400px;
+                }
+            .shortevent h3{
+                color:white;
+            }    
+            .shortevent h4{
+                color:white;
+            }
+            .shortevent h3{
+                color:white;
+            }
+            #shortevent:hover{ 
+                
+              transform: scale(1.05);
+              transition: 1.5s;
+              box-shadow: 6px 6px 6px 8px gray;
+                
+            }
+            #btn {
+                display: inline-block;
+                padding: 0.8em 1.3em;
+                text-decoration: none;
+                color: #FFF;
+                border-bottom: solid 4px #627295;
+                border-radius: 3px;
+                font-size: larger;
+                font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+            }
+            #btn:active {
+                -ms-transform: translateY(4px);
+                -webkit-transform: translateY(4px);
+                transform: translateY(4px);/*下に動く*/
+                border-bottom: none;/*線を消す*/
+                font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+            }
+            .drink_btn {
+                background: #3ecf7a;
+            }
+            .sports_btn {
+                background-color: #f2c200;
+            }
+            .shopping_btn {
+                background-color: #3498db;
+            }
+            .entertainment_btn {
+                background-color: #ff4d52;
+            }
+            .hobby_btn {
+                background-color: #a52faa;
+            }
+            .outdoor_btn {
+                background-color: #808080;
+            }
+            .learning_btn {
+                background-color: #f02475;
+            }
+            .social_btn {
+                background-color: #1bc1a0;
+            }
+            .career_btn {
+                background-color: #3ecf7a;
+            }
+  
+ .profilemoji{
+     font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+     
+     
+ }
+ .img{
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height:50%;
+    opacity: 0.9;
+    transition: 1.5s;
+    filter: grayscale(0%);
+ }
+  .carousel-inner img {
+      
+      width: 100%;
+      height: 40px;
+      margin: auto;
+  }
+  .carousel-caption h3 {
+      color: #fff !important;
+  }
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
+    }
+  }
+
+  .carousel-inner img {
+      
+      width: 100%;
+      height: 40px;
+      margin: auto;
+  }
+  .midashi{
+              padding: .5em;
+              border: 3px solid #7ED1E6;
+              border-radius: 5em .7em 2em .7em/.7em 2em .7em 3em;
+              font-family: 'Josefin Sans', sans-serif;
+               margin-bottom: 20px;
+               margin-top: 40px;
+              font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+          }
+#editbtn{
+    margin-left: 45;
+    margin-top: 35;
+}
+.namae{
+    font-size: 89;
+     font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
+}
+</style>
+
 @extends('layouts.app')
+
+<div id="myCarousel"class="carousel-inner" role="listbox">
+      <div class="item active">
+         <img src="{{ secure_asset('header4.jpg') }}"length = 50 , width = 100>
+        <div class="carousel-caption">
+          <h3></h3>
+          <p></p>
+        </div>      
+      </div>
+</div>
 
 @section('content')
    @if (Auth::check())
-    
-    <h1>{{ $user->username}} の詳細ページ</h1>
-    <p>ユーザー名:{{ $user->username }}</p>
-    <p>性別:{{ $user->gender }}</p>
-    <p>自己紹介:{{ $user->intro }}</p>
-    
-    
-   @if (Auth::id() == $user->id)
-    {!! link_to_route('users.edit', '自己紹介を編集', ['username' => $user->id], ['class' => 'btn btn-lg btn-primary'] ) !!} 
-   @endif
-
-
-    @foreach($events as $event)
-    <ul>
-        <h1>ホスト一覧</h1>
-        <li>{{ $event->event_name }} </li>
-            {!! link_to_route('events.show', '詳細を見る', ['event_name' => $event->id], ['class' => 'btn btn-lg btn-primary'] ) !!} 
-    </ul>
-    @endforeach
-    
-    @foreach($joinnings as $joinning)
-    <h1>Join一覧</h1>
-        <li> {{ $joinning->event_name }} </li>
-            {!! link_to_route('events.show', '詳細を見る', ['event_name' => $joinning->id], ['class' => 'btn btn-lg btn-primary'] ) !!} 
-    @endforeach
-   @endif
    
+ <div class = "midashi1">
+  <center><h3>Presonal Page</h3></center>
+ </div>
+    <div class="row">
+     <div class="col-sm-6">
+      <div class ="img">
+      <img src="{{ secure_asset('amanda3.jpg') }}" class="img-circle person" alt="Random Name" width="255" height="255" ><br>
+      <div id="editbtn">
+      @if (Auth::id() == $user->id)
+    
+     <a href="{{ URL::route('users.edit', ['username' => $user->id]) }}" class="cp_btn" > Edit My Profile </a>
+    @endif
+    </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-6">
+     <div class = "info">
+         <div class="namae">
+      {{ $user->username}}
+      </div>
+      <h2><i class="fa fa-venus-mars">:{{ $user->gender }}</i></h2>
+     <h2><span class="glyphicon glyphicon-book">:</span>{{ $user->intro }}</p></h2>
+     </div>
+    </div>
+    </div>
+    
+    <div class="midashi"> 
+        <center><h3>My Host</h3></center>
+        </div>
+        <div class="row">
+            @foreach($events as $event)
+            @if ($event->genre === 'Drink&Food')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#ff4d52;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#ff4d52">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="drink_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+             @elseif ($event->genre === 'Sports&Fitness')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#3498db;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#3498db">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="sports_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($event->genre === 'Entertainment')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#a52faa;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#a52faa">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="entertainment_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+             @elseif ($event->genre === 'Learning')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#5321a7;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#5321a7">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="learning_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($event->genre === 'Hobby')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#f2c200;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#f2c200">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="hobby_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($event->genre === 'Outdoor')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#1bc1a0;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#1bc1a0">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="outdoor_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($event->genre === 'Social')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#3ecf7a;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#3ecf7a">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="social_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($event->genre === 'Shopping')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#f02475;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#f02475">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="shopping_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @else ($event->genre === 'Career')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#808080;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#808080">{{ $event->event_name }}</h3><br>
+                         <h4>{{ $event->genre }}</h4>
+                         <h3>{{ $event->date }}</h3><h3>{{ $event->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="career_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @endif
+            @endforeach
+        </div>
+        
+    <div class="midashi"> 
+        <center><h3>My Join</h3></center>
+        </div>
+        <div class="row">
+            @foreach($joinnings as $joinning)
+            @if ($joinning->genre === 'Drink&Food')
+            
+             <div class="col-md-4" id="shortevent">
+                <div style="background:#ff4d52;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#ff4d52">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="drink_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+             @elseif ($joinning->genre === 'Sports&Fitness')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#3498db;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#3498db">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="sports_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($joinning->genre === 'Entertainment')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#a52faa;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#a52faa">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="entertainment_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+             @elseif ($joinning->genre === 'Learning')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#5321a7;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#5321a7">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="learning_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($joinning->genre === 'Hobby')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#f2c200;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#f2c200">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="hobby_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($joinning->genre === 'Outdoor')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#1bc1a0;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#1bc1a0">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="outdoor_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($joinning->genre === 'Social')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#3ecf7a;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#3ecf7a">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="social_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif ($joinning->genre === 'Shopping')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#f02475;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#f02475">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="shopping_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+            @elseif($joinning->genre === 'Career')
+            <div class="col-md-4" id="shortevent">
+                <div style="background:#808080;">
+                    <div class="shortevent">
+                         <h3 style="background-color:#808080">{{ $joinning->event_name }}</h3><br>
+                         <h4>{{ $joinning->genre }}</h4>
+                         <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
+                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="career_btn" id="btn"> Detail </a>
+                    </div>
+                </div>
+             </div>
+         </div>
+            @endif     
+            @endforeach
+        </div>
+      
+    @endif  
 @endsection
