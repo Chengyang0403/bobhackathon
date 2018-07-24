@@ -63,7 +63,7 @@
   
   .person {
       border: 10px solid transparent;
-      margin-bottom: 79px;
+      margin-bottom: 101px;
       width: 67%;
       height: 24%;
       opacity: 0.7;
@@ -278,35 +278,34 @@ color:pink;
     <!--小さな入れ物　Register-->
     <div class="col-sm-4">
       <p class="text-center"><strong>使い方は簡単<br><br></strong></p><br>
-      <a href="#demo" data-toggle="collapse">
+      
         <img src="{{ secure_asset('setsume1.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
         
-      </a>
-      <div id="demo" class="collapse">
+      
+      
         <br><p1>あなたの「やりたいこと」を、想いに乗せて発信するだけ。想いを共にする同期と、最高の体験を。</p1>
-      </div>
+      
     </div>
     
     <!--小さな入れ物　Create-->
     <div class="col-sm-4">
       <p class="text-center"><strong>いつでも、すぐに<br><br></strong></p><br>
-      <a href="#demo2" data-toggle="collapse">
+      
         <img src="{{ secure_asset('setsume2.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo2" class="collapse">
-        <p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
+      
+      
+         <br><p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
       </div>
-    </div>
     
     <!--小さな入れ物 Join-->
     <div class="col-sm-4">
       <p class="text-center"><strong>さぁ、始めよう<br><br></strong></p><br>
-      <a href="#demo3" data-toggle="collapse">
+      
         <img src="{{ secure_asset('setsume3.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo3" class="collapse">
-        <p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
-      </div>
+      
+      
+        <br> <p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
+      
     </div>
   
   </div>
@@ -601,35 +600,35 @@ color:pink;
     <!--小さな入れ物　Register-->
     <div class="col-sm-4">
       <p class="text-center"><strong>使い方は簡単<br><br></strong></p><br>
-      <a href="#demo" data-toggle="collapse">
+      
         <img src="{{ secure_asset('setsume1.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
         
-      </a>
-      <div id="demo" class="collapse">
+      
+      
         <br><p1>あなたの「やりたいこと」を、想いに乗せて発信するだけ。想いを共にする同期と、最高の体験を。</p1>
-      </div>
+      
     </div>
     
     <!--小さな入れ物　Create-->
     <div class="col-sm-4">
       <p class="text-center"><strong>いつでも、すぐに<br><br></strong></p><br>
-      <a href="#demo2" data-toggle="collapse">
+      
         <img src="{{ secure_asset('setsume2.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo2" class="collapse">
-        <p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
-      </div>
+      
+      
+        <br><p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
+      
     </div>
     
     <!--小さな入れ物 Join-->
   <div class="col-sm-4">
       <p class="text-center"><strong>さぁ、始めよう<br><br></strong></p><br>
-      <a href="#demo3" data-toggle="collapse">
+     
         <img src="{{ secure_asset('setsume3.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
-      </a>
-      <div id="demo3" class="collapse">
-        <p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
-      </div>
+     
+      
+        <br><p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
+      
     </div>
   
   </div>

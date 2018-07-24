@@ -12,7 +12,7 @@
   background: #ff1493;
   overflow: hidden;
   z-index: 1 !important;
-  margin-left:15px;
+  margin-left:80px;
   }
   .cp_btn3:after {
   content:"";
@@ -320,18 +320,20 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
 <html>
     <body>
     @if (Auth::check()) 
-     <div class="event_content text-center">
-      <h1 class="col-sm-12">EVENT INFO</h1>
-       @if (Auth::id() == $event->user->id)
+
+    <div class="event_content text-center">
+          <h1 class="col-sm-12">EVENT INFO</h1>
+           @if (Auth::id() == $event->user->id)
         <div class="col-sm-offset-8 col-sm-1">
-        <a href="{{ URL::route('events.edit', ['id' => $event->id ]) }}" class="cp_btn3" > Edit </a>
+            <a href="{{ URL::route('events.edit', ['id' => $event->id ]) }}" class="cp_btn3" > Edit </a>
         </div>
-        <div class="col-sm-offset-1 col-sm-1">
+            <div class="col-sm-offset-1 col-sm-1">
         {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
          <button type="submit"class="cp_btn3">Delete</button>
         {!! Form::close() !!}
         </div>
        @endif
+       
        <div class="row">
           <table class="col-sm-offset-1 col-sm-10">
             <tr>
@@ -372,13 +374,13 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
                <td>{{$event->due}}</td>
             </tr>
             <tr>
-                <th><h3>残り人数</h3></th>
+                <th><h3>Remaining Seats</h3></th>
                 <td><?php echo ($event->capacity - $count_joinning);?>人</td>
             </tr>
          </table>
         
-        <center>@include('button.join_button', ['event' => $event])</center>
         </div>
+        <center>@include('button.join_button', ['event' => $event])</center>
             
         <h1>JOINNERS' LIST</h1>
         @foreach($joinners as $joinner)
@@ -389,19 +391,14 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
     <div class="comment1">
     <div class="midashi">
         <h1>COMMENT</h1>
-        </div>
-        
+    </div>
         <div class="bulletin">
         {!! Form::open(['route' => 'bulletins.store']) !!}
-                
-        
                 <div class="cp_iptxt">
                  <center><input type="text" class="ef" name="bulletin" autocomplete="off" ></center>
                  
                  {!! Form::hidden('event_id', $event->id) !!}
                  {!! Form::hidden('user_id', Auth::id()) !!}
-                 
-                 
                  
                  <center><button type = "sumbit" class="cp_btn3">Post</button></center>
                 </div>
@@ -427,7 +424,7 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
         
     </div>
   </div>
-     </div>
+     
 
     
   
@@ -435,9 +432,6 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
 
 
    @endif
-    
-</body>
-</html>
    
   
   
