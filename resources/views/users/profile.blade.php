@@ -454,7 +454,7 @@ h3 {
                          <h3 style="background-color:#808080">{{ $joinning->event_name }}</h3><br>
                          <h4>{{ $joinning->genre }}</h4>
                          <h3>{{ $joinning->date }}</h3><h3>{{ $joinning->time }}</h3><br>
-                         <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="career_btn" id="btn"> Detail </a>
+                         <a href="{{ URL::route('events.show', ['event_name' => $joinning->id]) }}" class="career_btn" id="btn"> Detail </a>
                     </div>
                 </div>
              </div>

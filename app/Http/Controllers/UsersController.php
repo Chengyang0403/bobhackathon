@@ -11,7 +11,6 @@ class UsersController extends Controller
    public function show($id)
    {
         $user = User::find($id);
-        $events = [];
         $events = $user->events()->orderBy('created_at', 'desc')->paginate(10);
         $joinnings = $user->joinings()->orderBy('created_at', 'desc')->paginate(10);
         $data = [
