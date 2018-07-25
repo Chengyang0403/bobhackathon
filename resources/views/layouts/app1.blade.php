@@ -25,8 +25,11 @@ font-family: 'Ubuntu', sans-serif;
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
         <style>
-           
-            
+            .container {
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+            }
             img {
                 max-width: 100%;
             }

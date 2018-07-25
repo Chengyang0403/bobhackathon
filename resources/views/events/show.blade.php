@@ -305,7 +305,7 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
   
 </style>
 
-@extends('layouts.app')
+@extends('layouts.app1')
 <div id ="myCarousel" class="carousel-inner" role="listbox">
       <div class="item active">
          <img src="{{ secure_asset('header4.jpg') }}"length = 50 , width = 100>
