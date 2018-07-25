@@ -218,12 +218,12 @@ h3 {
     
     <div class="form-group">
        
-        {!! Form::label('file', '画像アップロード', ['class' => 'control-label']) !!}
+        
         {!! Form::file('file') !!}
     </div>
     
-    <div class="form-group">
-        {!! Form::submit('アップロード', ['class' => 'btn btn-default']) !!}
+    <div>
+        <button type = "sumbit" class="cp_btn">画像アップロード</button>
     </div>
     @endif
     {!! Form::close() !!}
@@ -235,7 +235,7 @@ h3 {
          <div class = "info">
              <div class="namae">{{ $user->username}}</div>
              <h2><i class="fa fa-venus-mars">:{{ $user->gender }}</i></h2>
-             <h2 class="col-sm-8"><span class="glyphicon glyphicon-book">:</span>{{ $user->intro }}</p></h2>
+             <h2 class="col-sm-12"><span class="glyphicon glyphicon-book">:</span>{{ $user->intro }}</p></h2>
          </div>
      </div>
      <div id="editbtn" class="col-sm-offset-1 col-sm-2">

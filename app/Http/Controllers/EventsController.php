@@ -10,7 +10,7 @@ class EventsController extends Controller
 {
     public function index()
     {
-        $events = Event::paginate(15);
+        $events = Event::orderBy('date', 'asc')->paginate(15);
         
      
         

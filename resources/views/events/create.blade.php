@@ -40,7 +40,8 @@ opacity: 1;
 
 .label1{
    color: #afaead;
-   margin-left: 14px;
+   margin-left: 12px;margin-top: 25px;
+   font-size: 22px;
 }
 #placeholder{
     
@@ -191,7 +192,7 @@ color: #da3c41;
                 </div> 
                 
                 <div class="cp_iptxt">
-                    <input class="ef" name="event_name" type="text" value="{{old('event_name')}}" autocomplete="off" placeholder="example:女子会＠二子玉川">
+                    <input maxlength='30'class="ef" name="event_name" type="text" value="{{old('event_name')}}" autocomplete="off" placeholder="(30字以内)">
                     {!! Form::label('event_name', 'イベント名') !!}
                     <span class="focus_line"></span>
                 </div>
@@ -206,8 +207,8 @@ color: #da3c41;
                 
                 
                 <div class="cp_iptxt">
-                    <input  class="ef" name="capacity" type="text" value="{{old('capacity')}}" autocomplete="off">
-                   {!! Form::label('capacity', '募集人数（半角）') !!}
+                    <input  class="ef" name="capacity" type="text" value="{{old('capacity')}}" autocomplete="off" placeholder=（半角）>
+                   {!! Form::label('capacity', '募集人数') !!}
                    <span class="focus_line"></span>
                 </div>
                 

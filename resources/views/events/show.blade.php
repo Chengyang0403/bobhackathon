@@ -306,6 +306,9 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
   .chat-area2{
       margin-top: -20px;
   }
+  .joinners_list {
+      margin-top: 75px;
+  }
   
 </style>
 
@@ -344,39 +347,45 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
                 <th><h3>Event</h3></th>
                 <td><h2>{{ $event->event_name }}</h2></td>
              </tr>
+             <tr>
+                <th><h3>Host</h3></th>
+                <td>{!! link_to_route('users.profile', $event->user->username, ['username' => $event->user->id]) !!}</td>
+            </tr>
+            
+             <tr>
+                <th><h3>Genre</h3></th>
+                <td>{{ $event->genre }}</td>
+              </tr>
             <tr>
                 <th><h3>Comment</h3></th>
                 <td>{{$event->comment}}</td> 
              </tr>
-             <tr>
-                <th><h3>Genre</h3></th>
-                 <td>{{ $event->genre }}</td>
-              </tr>
-            </tr>
-            <tr>
-                <th><h3>Host</h3></th>
-                <td>{!! link_to_route('users.profile', $event->user->username, ['username' => $event->user->id]) !!}</td>
-            </tr>
+            
             <tr>
               <th><h3>Place</h3></th>
               <td> {{$event->place}} </td>
             </tr>
+            
             <tr>
               <th><h3>Date</h3></th>
               <td>{{$event->date}}</td>
             </tr>
+            
             <tr>
               <th><h3>Time</h3></th>
               <td>{{$event->time}}</td>
             </tr>
+            
             <tr>
               <th><h3>Capacity</h3></th>
               <td>{{$event->capacity}}人</td>
             </tr>
+            
             <tr>
               <th><h3>Due Date</h3></tj>
                <td>{{$event->due}}</td>
             </tr>
+            
             <tr>
                 <th><h3>Remaining Seats</h3></th>
                 <td><?php echo ($event->capacity - $count_joinning);?>人</td>
@@ -386,13 +395,13 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
         </div>
         <center>@include('button.join_button', ['event' => $event])</center>
             
-        <h1>JOINNERS' LIST</h1>
+        <h1 class="joinners_list">JOINNERS' LIST</h1>
         @foreach($joinners as $joinner)
         <span class="joinners">
             <li>{!! link_to_route('users.profile', $joinner->username, ['username' => $joinner->id]) !!}</li>
         </span>
         @endforeach
-    <div class="comment1">
+    <div class="comment1" id="comment1">
     <div class="midashi">
         <h1>COMMENT</h1>
     </div>

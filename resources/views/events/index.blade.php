@@ -28,7 +28,7 @@
     background-color: white;
 }
 .title{
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 30px;
 }
 
@@ -36,6 +36,7 @@
       font: 400 20px/1.8 Lato, sans-serif;
       color: black;
     }
+    
    
 
 
@@ -175,6 +176,9 @@ color:pink;
             .nav-tabs a {
                 color: black;
             }
+            .nav-tabs{
+                margin-bottom: 10px;
+            }
             #zentai{
                font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
                font-size:20px;
@@ -205,8 +209,18 @@ color:pink;
            }
            .col-sm-2{
                margin-bottom: 20px;
-           }
-           
+           }       
+           .midashi2 {
+               padding: .5em;
+              border: 3px solid #7ED1E6;
+              border-radius: 5em .7em 2em .7em/.7em 2em .7em 3em;
+              font-family: 'Josefin Sans', sans-serif;
+               margin-top: 156px;
+               margin-bottom: 30px;
+          }
+          .nav nav-tabs{
+              margin-bottom: 10px;
+          }
 </style>
 @extends('layouts.app')
 
@@ -266,7 +280,7 @@ color:pink;
 <div class="container text-center">
  <div class="title">
      <h3><strong>D・O・U・K・I・Sとは</h3>
-     <h3><strong>同期の 同期のための 同期による</p>
+     <h3><strong>同期の 同期による 同期のための</p>
 <p>仲間集めサービスです。</p></strong></h3>
   </div> 
   
@@ -349,7 +363,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="drink_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
      @elseif ($event->genre === 'Sports&Fitness')
     <div class="col-md-4" id="shortevent">
         <div style="background:#3498db;">
@@ -360,7 +374,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="sports_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @elseif ($event->genre === 'Entertainment')
     <div class="col-md-4" id="shortevent">
         <div style="background:#a52faa;">
@@ -371,7 +385,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="entertainment_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
      @elseif ($event->genre === 'Learning')
     <div class="col-md-4" id="shortevent">
         <div style="background:#5321a7;">
@@ -382,7 +396,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="learning_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @elseif ($event->genre === 'Hobby')
     <div class="col-md-4" id="shortevent">
         <div style="background:#f2c200;">
@@ -393,7 +407,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="hobby_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @elseif ($event->genre === 'Outdoor')
     <div class="col-md-4" id="shortevent">
         <div style="background:#1bc1a0;">
@@ -404,7 +418,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="outdoor_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @elseif ($event->genre === 'Social')
     <div class="col-md-4" id="shortevent">
         <div style="background:#3ecf7a;">
@@ -415,7 +429,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="social_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @elseif ($event->genre === 'Shopping')
     <div class="col-md-4" id="shortevent">
         <div style="background:#f02475;">
@@ -426,7 +440,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="shopping_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @else ($event->genre === 'Career')
     <div class="col-md-4" id="shortevent">
         <div style="background:#808080;">
@@ -437,7 +451,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="career_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
     @endif
     @endforeach
     {!! $events->render() !!}</div>
@@ -456,7 +470,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="sports" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Sports&Fitness')
@@ -472,7 +486,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="entertainment" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Entertainment')
@@ -485,7 +499,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="entertainment_btn" id="btn"> Detail </a>
             </div>
         </div>
-     {!! $events->render() !!}</div>
+     </div>
      @endif
      @endforeach
     </div>
@@ -504,7 +518,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    {!! $events->render() !!}{!! $events->render() !!}</div>
+    </div>
     <div id="hobby" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Hobby')
@@ -520,7 +534,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="outdoor" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Outdoor')
@@ -536,7 +550,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="social" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Social')
@@ -552,7 +566,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="shopping" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Shopping')
@@ -568,7 +582,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="career" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Career')
@@ -585,14 +599,14 @@ color:pink;
       @endif
       @endforeach
       
-    {!! $events->render() !!}</div>
+    </div>
   </div>     
      
     @else
 <div class="container text-center">
  <div class="title">
      <h3><strong>D・O・U・K・I・Sとは</h3>
-     <h3><strong>同期の 同期のための 同期による</p>
+     <h3><strong>同期の 同期による 同期のための</p>
 <p>仲間集めサービスです。</p></strong></h3>
   </div> 
   
@@ -815,7 +829,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="learning" class="tab-pane fade">
      @foreach ($events as $event)
      @if ($event->genre === 'Learning')
@@ -831,7 +845,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="hobby" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Hobby')
@@ -847,7 +861,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="outdoor" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Outdoor')
@@ -863,7 +877,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="social" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Social')
@@ -879,7 +893,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="shopping" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Shopping')
@@ -895,7 +909,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    {!! $events->render() !!}</div>
+    </div>
     <div id="career" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Career')
@@ -912,16 +926,27 @@ color:pink;
       @endif
       @endforeach
       {!! $events->render() !!}
-    {!! $events->render() !!}</div>
+    </div>
   </div>
     
 
 
 
 @endif
+
+
+
+
+
+
+
+
 <div id="zentai">
     <div id ="myCarousel1" class="carousel-inner" role="listbox">
       <div class="item active">
+          <div class ="midashi2">
+  <center><h3>Team Intro</h3></center>
+ </div>
          <img src="{{ secure_asset('doukis.jpg') }}"length = 50 , width = 100>
         <div class="carousel-caption">
          
