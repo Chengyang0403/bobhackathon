@@ -63,7 +63,7 @@
   
   .person {
       border: 10px solid transparent;
-      margin-bottom: 101px;
+      margin-bottom: 79px;
       width: 67%;
       height: 24%;
       opacity: 0.7;
@@ -78,7 +78,7 @@
   .person2 {
       border: 10px solid transparent;
       margin-bottom: 80px;
-      width: 68%;
+      width: 100%;
       height: 27%;
       opacity: 0.7;}
 
@@ -178,11 +178,7 @@ color:pink;
             .nav-tabs a {
                 color: black;
             }
-            .nav{
-                margin-top:-20px;
-                margin-bottom:30px;
-            }
-           #zentai{
+            #zentai{
                font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
                font-size:20px;
            }
@@ -208,9 +204,6 @@ color:pink;
            #shashin img{
                width:100%;
                
-           }
-           .text-center{
-               font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
            }
            
 </style>
@@ -278,8 +271,7 @@ color:pink;
   <!--全体の入れ物2-->
   <div class="row">
     
-    <!--小さな入れ物　Register-->
-    <div class="col-sm-4">
+   <div class="col-sm-4">
       <p class="text-center"><strong>使い方は簡単<br><br></strong></p><br>
       
         <img src="{{ secure_asset('setsume1.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
@@ -297,17 +289,18 @@ color:pink;
         <img src="{{ secure_asset('setsume2.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
       
       
-         <br><p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
-      </div>
+        <br><p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
+      
+    </div>
     
     <!--小さな入れ物 Join-->
-    <div class="col-sm-4">
+  <div class="col-sm-4">
       <p class="text-center"><strong>さぁ、始めよう<br><br></strong></p><br>
-      
+     
         <img src="{{ secure_asset('setsume3.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
+     
       
-      
-        <br> <p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
+        <br><p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
       
     </div>
   
@@ -585,10 +578,7 @@ color:pink;
       @endif
       @endforeach
     </div>
-  </div>
-  
-  
- 
+  </div>     
      
     @else
     <div id="band" class="container text-center">
@@ -600,8 +590,7 @@ color:pink;
   <!--全体の入れ物2-->
   <div class="row">
     
-    <!--小さな入れ物　Register-->
-    <div class="col-sm-4">
+   <div class="col-sm-4">
       <p class="text-center"><strong>使い方は簡単<br><br></strong></p><br>
       
         <img src="{{ secure_asset('setsume1.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
@@ -636,6 +625,12 @@ color:pink;
   
   </div>
 </div>
+
+
+
+
+
+
 
 
 <div class="midashi">
@@ -905,9 +900,11 @@ color:pink;
       @endforeach
     </div>
   </div>
+    
+
+
 
 @endif
-
 <div id="zentai">
     <div id ="myCarousel1" class="carousel-inner" role="listbox">
       <div class="item active">
@@ -963,7 +960,6 @@ color:pink;
    </div>
  </div>
  
-</div>  
+</div> 
+
 @endsection
-
-

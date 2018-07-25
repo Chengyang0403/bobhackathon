@@ -4,7 +4,7 @@
     body {
 font-family: 'Ubuntu', sans-serif; 
 }
-  .container {
+.container {
     margin: 0px;
     padding: 0px;
 }
@@ -20,12 +20,16 @@ font-family: 'Ubuntu', sans-serif;
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
         <style>
+            .container {
+                margin: 0px;
+                padding: 0px;
+                width: 100%;
+            }
             img {
                 max-width: 100%;
             }

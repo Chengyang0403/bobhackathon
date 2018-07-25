@@ -152,13 +152,14 @@ h3 {
               font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
           }
 #editbtn{
-    margin-left: 45;
-    margin-top: 35;
+    margin: 47px 0px 0px 0px;
+    padding: 0px;
 }
 .namae{
     font-size: 89;
      font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
 }
+
 </style>
 
 @extends('layouts.app')
@@ -177,9 +178,9 @@ h3 {
    @if (Auth::check())
    
  <div class = "midashi1">
-  <center><h3>Presonal Page</h3></center>
+  <center><h3>Personal Page</h3></center>
  </div>
-    <div class="row">
+    <div class="row" style="width:100%;">
      <div class="col-sm-3">
       <div class ="img">
       @if ($user->image_data)　　　　　　　
@@ -190,11 +191,7 @@ h3 {
 
                 @endif    
       <br>
-      <div id="editbtn">
-      @if (Auth::id() == $user->id)
     
-     <a href="{{ URL::route('users.edit', ['username' => $user->id]) }}" class="cp_btn" > Edit My Profile </a>
-    @endif
   
     
     {!! Form::open(['url' => '/upload', 'method' => 'post', 'files' => true]) !!}
@@ -217,6 +214,8 @@ h3 {
         </div>
     @endif
     
+    @if (Auth::id() == $user->id)
+    
     <div class="form-group">
        
         {!! Form::label('file', '画像アップロード', ['class' => 'control-label']) !!}
@@ -226,23 +225,25 @@ h3 {
     <div class="form-group">
         {!! Form::submit('アップロード', ['class' => 'btn btn-default']) !!}
     </div>
+    @endif
     {!! Form::close() !!}
     
   
     </div>
-      </div>
-    </div>
-    
-    
-    <div class="col-sm-6">
-     <div class = "info">
-         <div class="namae">
-      {{ $user->username}}
-      </div>
-      <h2><i class="fa fa-venus-mars">:{{ $user->gender }}</i></h2>
-     <h2><span class="glyphicon glyphicon-book">:</span>{{ $user->intro }}</p></h2>
      </div>
-    </div>
+     <div class="col-sm-offset-1 col-sm-5">
+         <div class = "info">
+             <div class="namae">{{ $user->username}}</div>
+             <h2><i class="fa fa-venus-mars">:{{ $user->gender }}</i></h2>
+             <h2 class="col-sm-8"><span class="glyphicon glyphicon-book">:</span>{{ $user->intro }}</p></h2>
+         </div>
+     </div>
+     <div id="editbtn" class="col-sm-offset-1 col-sm-2">
+      @if (Auth::id() == $user->id)
+    
+     <a href="{{ URL::route('users.edit', ['username' => $user->id]) }}" class="cp_btn" > Edit My Profile </a>
+      @endif
+     </div>
     </div>
     
     <div class="midashi"> 
