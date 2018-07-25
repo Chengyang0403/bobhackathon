@@ -63,6 +63,14 @@ padding: 4px 0;
 border: 0;
 border-bottom: 1px solid #1b2538;
 background-color: transparent;
+width:1500px;
+}
+.cp_iptxt textarea[type='textarea'] {
+font: 15px/24px sans-serif;
+box-sizing: border-box;
+width: 100%;
+letter-spacing: 1px;
+padding-left: 6em;
 }
 .ef ~ .focus_line {
 position: absolute;
@@ -131,17 +139,16 @@ color: #da3c41;
 
 @section('content')
 
-<div class="col-md-7 col-md-offset-3">
+<div class="col-md-8 col-md-offset-2">
 <center><h1>{{ $user->username }}の編集ページ</h1></center>
 
 
 {!! Form::model($user, ['route' => ['users.update', $user->id], 'method' => 'put']) !!}
 
-                <div class="cp_iptxt">
-                    
-                    {!! Form::text('intro',old('intro'), ['class' => 'ef']) !!}
-                    {!! Form::label('intro', '自己紹介') !!}
-                     <span class="focus_line"></span>
+                <div class="cp_iptxt" style="margin: 0px;width: 654px;">
+                    <textarea  class="ef" name="comment" type="textarea"   autocomplete="off">{{old('comment')}}</textarea>
+                    {!! Form::label('edit', 'Intro') !!}
+                    <span class="focus_line"></span>
                 </div>
                 
                <div class="col-sm-6 col-md-offset-3"> 

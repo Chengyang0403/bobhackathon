@@ -126,7 +126,7 @@
             <li>{!! link_to_route('logout.get', 'Logout')!!}</li>
            </ul>
         
-        <li><a href="#myCarousel1">Team BoB</a></li>
+        
     </div>
   </div>
 </nav>
@@ -144,7 +144,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li>{!! link_to_route('events.index', 'HOME') !!} </li>
-        <li><a href="#aruaru">ABOUT</a></li>
+
          <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">ACCOUNT
           <span class="caret"></span></a>
@@ -153,7 +153,7 @@
              <li><a data-toggle="modal" data-target="#login">Login</a></li>
            </ul>
         
-        <li><a href="#myCarousel1">Team BoB</a></li>
+        
     </div>
   </div>
 </nav>

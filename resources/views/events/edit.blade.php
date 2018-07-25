@@ -67,6 +67,14 @@ padding: 4px 0;
 border: 0;
 border-bottom: 1px solid #1b2538;
 background-color: transparent;
+width:100%;
+}
+ .cp_iptxt textarea[type='textarea'] {
+font: 15px/24px sans-serif;
+box-sizing: border-box;
+width: 100%;
+letter-spacing: 1px;
+padding-left: 6em;
 }
 .ef ~ .focus_line {
 position: absolute;
@@ -123,6 +131,10 @@ color: #da3c41;
       font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
       margin-left: -70px;
   }
+  .label1{
+   color: #afaead;
+   margin-left: 14px;
+}
 </style>
 
 @extends('layouts.app')
@@ -184,11 +196,10 @@ color: #da3c41;
                      <span class="focus_line"></span>
                 </div>
                 
-                <div class="cp_iptxt">
-                    
-                    {!! Form::text('comment',old('comment'), ['class' => 'ef']) !!}
+                 <div class="cp_iptxt">
+                    <textarea  class="ef" name="comment" type="textarea"   autocomplete="off">{{old('comment')}}</textarea>
                     {!! Form::label('comment', 'イベント概要') !!}
-                     <span class="focus_line"></span>
+                    <span class="focus_line"></span>
                 </div>
                 
                  <div class="cp_iptxt">
@@ -196,7 +207,7 @@ color: #da3c41;
                     {!! Form::label('due', '募集締め切り') !!}
                      <span class="focus_line"></span>
                 </div>
-                 <div>
+                 <div class ="label1">
                 {!! Form::label('genre', 'ジャンル') !!}
                         {{Form::select('genre', [
                         'Drink&Food' => 'Drink&Food',

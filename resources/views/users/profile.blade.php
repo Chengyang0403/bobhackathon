@@ -1,5 +1,5 @@
 <style>
-.info{
+.info h2{
     
     font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
 }
@@ -352,7 +352,7 @@ h3 {
              </div>
             @endif
             @endforeach
-        </div>
+        {!! $events->render() !!}</div>
         
     <div class="midashi"> 
         <center><h3>My Join</h3></center>
@@ -459,7 +459,7 @@ h3 {
                     </div>
                 </div>
              </div>
-         </div>
+         {!! $events->render() !!}</div>
             @endif     
             @endforeach
         </div>

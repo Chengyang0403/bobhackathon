@@ -38,7 +38,10 @@ height: 350%;
 opacity: 1;
 }
 
-
+.label1{
+   color: #afaead;
+   margin-left: 14px;
+}
 #placeholder{
     
     color: red; 
@@ -57,6 +60,15 @@ width: 100%;
 letter-spacing: 1px;
 padding-left: 8em;
 }
+.cp_iptxt textarea[type='textarea'] {
+font: 15px/24px sans-serif;
+box-sizing: border-box;
+width: 100%;
+letter-spacing: 1px;
+padding-left: 6em;
+}
+
+
 .cp_iptxt input[type='text']:focus {
 outline: none;
 }
@@ -80,6 +92,7 @@ padding: 4px 0;
 border: 0;
 border-bottom: 1px solid #1b2538;
 background-color: transparent;
+width: 100%
 }
 .ef ~ .focus_line {
 position: absolute;
@@ -161,8 +174,8 @@ color: #da3c41;
         <div class="col-md-7 col-md-offset-3">
 
             {!! Form::open(['route' => 'events.post']) !!}
-            <div>
-                {!! Form::label('genre', 'ジャンル') !!}
+            <div class = "label1">
+                <label>ジャンル</label>
                         {{Form::select('genre', [
                         'Drink&Food' => 'Drink&Food',
                         'Sports&Fitness' => 'Sports&Fitness',
@@ -200,7 +213,7 @@ color: #da3c41;
                 
                 
                 <div class="cp_iptxt">
-                    <input  class="ef" name="comment" type="text" value="{{old('comment')}}" autocomplete="off"　wrap="hard">
+                    <textarea  class="ef" name="comment" type="textarea"   autocomplete="off">{{old('comment')}}</textarea>
                     {!! Form::label('comment', 'イベント概要') !!}
                     <span class="focus_line"></span>
                 </div>

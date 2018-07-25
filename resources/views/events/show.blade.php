@@ -12,7 +12,7 @@
   background: #ff1493;
   overflow: hidden;
   z-index: 1 !important;
-  margin-left:80px;
+  margin: 0px;
   }
   .cp_btn3:after {
   content:"";
@@ -42,9 +42,7 @@
 font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
 position: relative;
 width: 80%;
-margin: 40px 3%;
-margin-bottom:-14px;
-margin-left:90px;
+margin: 0 auto;
 }
 .cp_iptxt input[type='text'] {
     
@@ -62,7 +60,7 @@ outline: none;
 padding: 4px 0;
 
 border-bottom: 1px solid #1b2538;
-margin-left:20px;
+margin-top: 20px;
 }
 .ef ~ .focus_line {
 position: absolute;
@@ -103,7 +101,6 @@ html {
 body {
   font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
   padding-top: 0px;
-  padding-bottom: 20px;
   
 }
            
@@ -203,6 +200,8 @@ th {
     float: right;
     font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
     background-color: #fafad2;;
+    ;
+    padding-left: 120px;
     
 }
 
@@ -301,7 +300,12 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
           .comment1{
               text-align:left;
           }
-  
+  .row {
+      margin-top: -15px;
+  }
+  .chat-area2{
+      margin-top: -20px;
+  }
   
 </style>
 
@@ -324,14 +328,14 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
     <div class="event_content text-center">
           <h1 class="col-sm-12">EVENT INFO</h1>
            @if (Auth::id() == $event->user->id)
-        <div class="col-sm-offset-8 col-sm-1">
-            <a href="{{ URL::route('events.edit', ['id' => $event->id ]) }}" class="cp_btn3" > Edit </a>
-        </div>
-            <div class="col-sm-offset-1 col-sm-1">
+        <!--<div class="col-sm-offset-8 col-sm-1">-->
+            <a href="{{ URL::route('events.edit', ['id' => $event->id ]) }}" class="cp_btn3 col-sm-offset-7 col-sm-2" > Edit </a>
+        <!--</div>-->
+        <!--<div class="col-sm-offset-1 col-sm-1">-->
         {!! Form::open(['route' => ['events.destroy', $event->id], 'method' => 'delete']) !!}
-         <button type="submit"class="cp_btn3">Delete</button>
+         <button type="submit"class="cp_btn3 col-sm-2" style="margin-left:5px;">Delete</button>
         {!! Form::close() !!}
-        </div>
+        <!--</div>-->
        @endif
        
        <div class="row">
@@ -395,7 +399,7 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
         <div class="bulletin">
         {!! Form::open(['route' => 'bulletins.store']) !!}
                 <div class="cp_iptxt">
-                 <center><input type="text" class="ef" name="bulletin" autocomplete="off" ></center>
+                 <input type="text" class="ef" name="bulletin" autocomplete="off" >
                  
                  {!! Form::hidden('event_id', $event->id) !!}
                  {!! Form::hidden('user_id', Auth::id()) !!}
@@ -406,16 +410,19 @@ font-family: 'Josefin Sans','Yu Gothic UI', sans-serif;
         {!! Form::close() !!}
         </div>
        @foreach($bulletins as $bulletin)
+       <div class="chat-area2">
         <div class="chat-area">
                 {{ $bulletin->user->username}}
                 <div class="chat-hukidashi">
                     <p>{{ $bulletin->bulletin }}</p>
                 </div>
                 @if (Auth::id() == $bulletin->user_id)
+                
                     {!! Form::open(['route' => ['bulletins.destroy', $bulletin->id], 'method' => 'delete']) !!}
                         <button class="btn"><i class="glyphicon glyphicon-remove"></i></button>
                     {!! Form::close() !!}
                 @endif
+            </div>
             </div>
                 
         

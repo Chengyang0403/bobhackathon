@@ -37,10 +37,7 @@
       color: black;
     }
    
-  p {
-      font-size: 30px;
-  }
-  
+
 
   
 
@@ -70,15 +67,15 @@
   }
   .person1 {
       border: 10px solid transparent;
-      margin-bottom: 94px;
-      width: 57%;
+      margin-bottom: 65px;
+      width: 70%;
       height: 25%;
       opacity: 0.7;
   }
   .person2 {
       border: 10px solid transparent;
-      margin-bottom: 80px;
-      width: 100%;
+      margin-bottom: 50px;
+      width: 80%;
       height: 27%;
       opacity: 0.7;}
 
@@ -184,26 +181,30 @@ color:pink;
            }
            
            #yookie p {
-               font-size: 20px;
+               font-size: 15px;
+               margin-top: 10px;margin-bottom: -10px;
            }
            #rina p {
-               font-size: 20px;
+               margin-top: 10px;font-size: 15px;margin-bottom: -10px;
            }
            #yui p {
-               font-size: 20px;
+               font-size: 15px;margin-top: 10px;margin-bottom: -10px;
            }
            #buzz p {
-               font-size: 20px;
+               font-size: 15px;margin-top: 10px;margin-bottom: -10px;
            }
            #shiori p {
-               font-size: 20px;
+               font-size: 15px;margin-top: 10px;margin-bottom: -10px;
            }
            #nari p {
-               font-size: 20px;
+               font-size: 15px;margin-top: 10px;margin-bottom: -10px;
            }
            #shashin img{
                width:100%;
                
+           }
+           .col-sm-2{
+               margin-bottom: 20px;
            }
            
 </style>
@@ -262,9 +263,11 @@ color:pink;
     @if (Auth::check())
         <?php $user = Auth::user(); ?>
 
-<div id="band" class="container text-center">
+<div class="container text-center">
  <div class="title">
-     <h3><strong>使い方</strong></h3>
+     <h3><strong>D・O・U・K・I・Sとは</h3>
+     <h3><strong>同期の 同期のための 同期による</p>
+<p>仲間集めサービスです。</p></strong></h3>
   </div> 
   
   
@@ -272,35 +275,38 @@ color:pink;
   <div class="row">
     
    <div class="col-sm-4">
-      <p class="text-center"><strong>使い方は簡単<br><br></strong></p><br>
+      <p class="text-center"><strong>まずはサインアップから<br><br></strong></p><br>
       
-        <img src="{{ secure_asset('setsume1.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
+        <img src="{{ secure_asset('setsume3.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
         
       
       
-        <br><p1>あなたの「やりたいこと」を、想いに乗せて発信するだけ。想いを共にする同期と、最高の体験を。</p1>
+        <br><p1>名前、写真、イントロを登録するだけ。</p>
+        <p1>さあ！始めよう！</p1>
       
     </div>
     
     <!--小さな入れ物　Create-->
     <div class="col-sm-4">
-      <p class="text-center"><strong>いつでも、すぐに<br><br></strong></p><br>
+      <p class="text-center"><strong>かんたん！イベント作成！<br><br></strong></p><br>
       
-        <img src="{{ secure_asset('setsume2.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
+        <img src="{{ secure_asset('setsume1.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
       
       
-        <br><p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
+        <br><p1>やりたいイベントを作成して仲間を集めよう！</p>
+            <p1>263人全員がホストになれます。</p1>
       
-    </div>
+     </div>
     
     <!--小さな入れ物 Join-->
   <div class="col-sm-4">
-      <p class="text-center"><strong>さぁ、始めよう<br><br></strong></p><br>
+      <p class="text-center"><strong>だれでも参加できる<br><br></strong></p><br>
      
-        <img src="{{ secure_asset('setsume3.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
+        <img src="{{ secure_asset('setsume2.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
      
       
-        <br><p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
+        <br><p1>ボタン１つで気軽にJoin!!</p1>
+            <br><p1>気になるイベントには質問もできます。</p1>
       
     </div>
   
@@ -331,6 +337,7 @@ color:pink;
 
 <div class="tab-content">
     <div id="top" class="tab-pane fade in active">
+        
       @foreach ($events as $event)   
     @if ($event->genre === 'Drink&Food')
     <div class="col-md-4" id="shortevent">
@@ -342,7 +349,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="drink_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
      @elseif ($event->genre === 'Sports&Fitness')
     <div class="col-md-4" id="shortevent">
         <div style="background:#3498db;">
@@ -353,7 +360,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="sports_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @elseif ($event->genre === 'Entertainment')
     <div class="col-md-4" id="shortevent">
         <div style="background:#a52faa;">
@@ -364,7 +371,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="entertainment_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
      @elseif ($event->genre === 'Learning')
     <div class="col-md-4" id="shortevent">
         <div style="background:#5321a7;">
@@ -375,7 +382,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="learning_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @elseif ($event->genre === 'Hobby')
     <div class="col-md-4" id="shortevent">
         <div style="background:#f2c200;">
@@ -386,7 +393,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="hobby_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @elseif ($event->genre === 'Outdoor')
     <div class="col-md-4" id="shortevent">
         <div style="background:#1bc1a0;">
@@ -397,7 +404,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="outdoor_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @elseif ($event->genre === 'Social')
     <div class="col-md-4" id="shortevent">
         <div style="background:#3ecf7a;">
@@ -408,7 +415,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="social_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @elseif ($event->genre === 'Shopping')
     <div class="col-md-4" id="shortevent">
         <div style="background:#f02475;">
@@ -419,7 +426,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="shopping_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @else ($event->genre === 'Career')
     <div class="col-md-4" id="shortevent">
         <div style="background:#808080;">
@@ -430,10 +437,10 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="career_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
     @endif
     @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="drink" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Drink&Food')
@@ -449,7 +456,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="sports" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Sports&Fitness')
@@ -465,7 +472,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="entertainment" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Entertainment')
@@ -478,7 +485,7 @@ color:pink;
                  <a href="{{ URL::route('events.show', ['event_name' => $event->id]) }}" class="entertainment_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
      @endif
      @endforeach
     </div>
@@ -497,7 +504,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    </div>
+    {!! $events->render() !!}{!! $events->render() !!}</div>
     <div id="hobby" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Hobby')
@@ -513,7 +520,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="outdoor" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Outdoor')
@@ -529,7 +536,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="social" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Social')
@@ -545,7 +552,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="shopping" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Shopping')
@@ -561,7 +568,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="career" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Career')
@@ -577,13 +584,16 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+      
+    {!! $events->render() !!}</div>
   </div>     
      
     @else
-    <div id="band" class="container text-center">
+<div class="container text-center">
  <div class="title">
-     <h3><strong>使い方</strong></h3>
+     <h3><strong>D・O・U・K・I・Sとは</h3>
+     <h3><strong>同期の 同期のための 同期による</p>
+<p>仲間集めサービスです。</p></strong></h3>
   </div> 
   
   
@@ -591,35 +601,38 @@ color:pink;
   <div class="row">
     
    <div class="col-sm-4">
-      <p class="text-center"><strong>使い方は簡単<br><br></strong></p><br>
+      <p class="text-center"><strong>まずはサインアップから<br><br></strong></p><br>
       
-        <img src="{{ secure_asset('setsume1.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
+        <img src="{{ secure_asset('setsume3.jpg') }}" class="img person" alt="Random Name" width="255" height="255">
         
       
       
-        <br><p1>あなたの「やりたいこと」を、想いに乗せて発信するだけ。想いを共にする同期と、最高の体験を。</p1>
+        <br><p1>名前、写真、イントロを登録するだけ。</p>
+        <p1>さあ！始めよう！</p1>
       
     </div>
     
     <!--小さな入れ物　Create-->
     <div class="col-sm-4">
-      <p class="text-center"><strong>いつでも、すぐに<br><br></strong></p><br>
+      <p class="text-center"><strong>かんたん！イベント作成！<br><br></strong></p><br>
       
-        <img src="{{ secure_asset('setsume2.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
+        <img src="{{ secure_asset('setsume1.jpg') }}" class="img person1" alt="Random Name" width="255" height="255">
       
       
-        <br><p1>同期とやるからこそ、価値がある。思い立ったらすぐにイベントを作成して、仲間を集めよう！まだ見ぬ仲間が、263人の中にきっといるはず。</p1>
+        <br><p1>やりたいイベントを作成して仲間を集めよう！</p>
+            <p1>263人全員がホストになれます。</p1>
       
-    </div>
+     </div>
     
     <!--小さな入れ物 Join-->
   <div class="col-sm-4">
-      <p class="text-center"><strong>さぁ、始めよう<br><br></strong></p><br>
+      <p class="text-center"><strong>だれでも参加できる<br><br></strong></p><br>
      
-        <img src="{{ secure_asset('setsume3.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
+        <img src="{{ secure_asset('setsume2.jpg') }}" class="img person2" alt="Random Name" width="255" height="255">
      
       
-        <br><p1>まずはプロフィールを作ろう。イベントをホストしたりイベントに参加したりすることで、あなたの想いに最適なコミュニティを見つけよう！</p1>
+        <br><p1>ボタン１つで気軽にJoin!!</p1>
+            <br><p1>気になるイベントには質問もできます。</p1>
       
     </div>
   
@@ -754,7 +767,7 @@ color:pink;
      </div>
     @endif
     @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="drink" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Drink&Food')
@@ -767,7 +780,7 @@ color:pink;
                  <a data-toggle="modal" data-target="#login" class="drink_btn" id="btn"> Detail </a>
             </div>
         </div>
-     </div>
+     {!! $events->render() !!}</div>
      @endif
      @endforeach
     </div>
@@ -786,7 +799,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="entertainment" class="tab-pane fade">
     @foreach ($events as $event)   
     @if ($event->genre === 'Entertainment')
@@ -802,7 +815,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="learning" class="tab-pane fade">
      @foreach ($events as $event)
      @if ($event->genre === 'Learning')
@@ -818,7 +831,7 @@ color:pink;
      </div>
      @endif
      @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="hobby" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Hobby')
@@ -834,7 +847,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="outdoor" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Outdoor')
@@ -850,7 +863,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="social" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Social')
@@ -866,7 +879,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="shopping" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Shopping')
@@ -882,7 +895,7 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+    {!! $events->render() !!}</div>
     <div id="career" class="tab-pane fade">
       @foreach ($events as $event)
       @if ($event->genre === 'Career')
@@ -898,7 +911,8 @@ color:pink;
      </div>
       @endif
       @endforeach
-    </div>
+      {!! $events->render() !!}
+    {!! $events->render() !!}</div>
   </div>
     
 
@@ -911,7 +925,7 @@ color:pink;
          <img src="{{ secure_asset('doukis.jpg') }}"length = 50 , width = 100>
         <div class="carousel-caption">
          
-          <p><em>TEAM MEMBERS</em></p>
+          <h2><em>TEAM MEMBERS</em></h2>
         </div>      
       </div>
 </div>
@@ -920,43 +934,43 @@ color:pink;
  <div class="col-sm-2" id="yookie">
    <p class="text-center"><strong>Yookie</strong></p><br>
    <div id="yookie1">
-    <p>髪の毛から靴下までおしゃれに気を抜かない！文言の鬼！</p>
+    <p>見た目はおしゃれパリピだが、実は誰よりも夢にアツいパッションをもっている。</p>
    </div>
  </div>
   
  <div class="col-sm-2" id="rina">
    <p class="text-center"><strong>Rina</strong></p><br>
    <div id="rina1">
-    <p>ファンクションの鬼！実はシャレオツで、髪のインナーカラーが素敵</p>
+    <p>No.1秀才で頼れるリーダー。毒舌でアネゴ肌だが、時折見せるかわいい発言がとっても女の子。</p>
    </div>
  </div>
   
  <div class="col-sm-2" id="shiori">
    <p class="text-center"><strong>Shiori</strong></p><br>
    <div id="shiori1">
-    <p>画像挿入のお姫様。画像アップロード機能は譲れない！</p>
+    <p>しっかり者で働きまくりな我らのお母さん。しおりママのクッキーがみんな大好きでした。</p>
    </div>
  </div>
   
  <div class="col-sm-2" id="buzz">
    <p class="text-center"><strong>Buzz</strong></p><br>
    <div id="buzz1">
-    <p>イラストレーターの鬼！個性的なかわいい絵を誕生させた。楽天の蛭子能収。</p>
+    <p>チームにハッピーを運ぶムードメーカー。デブ活を始めた結果、プログラミング技術とともに体も成長中。</p>
    </div>
  </div>
   
  <div class="col-sm-2" id="yui">
    <p class="text-center"><strong>Yui</strong></p><br>
    <div id="yui1">
-    <p>抜群のスタイルを活かして、バレリーナとして活躍中！</p>
-    <p>議事録とタスク処理コントロールの鬼！</p>
+    <p>同期一のわがまま娘。気は強いが常にみんなを気遣って声をかけてくれる優しいお姉さんな一面も。</p>
+    
    </div>
  </div>
   
  <div class="col-sm-2" id="nari">
    <p class="text-center"><strong>Nari</strong></p><br>
    <div id="nari1">
-    <p>デザイン担当でCSSの鬼！日本語、英語、中国語の３つを操る言葉の魔術師</p>
+    <p>英語、日本語、中国語を操るトリリンガル。デザインは死ぬまで凝りつづけます。</p>
    </div>
  </div>
  
